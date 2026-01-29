@@ -6,7 +6,7 @@ import { useState } from 'react';
 export function Contact() {
   const [formData, setFormData] = useState({
     name: '',
-    email: '',
+    phone: '',
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -25,20 +25,21 @@ export function Contact() {
           'Accept': 'application/json',
         },
         body: JSON.stringify({
-          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || '',
+          access_key: 'b9b09269-ca80-4887-b5ff-c07b020aad4f',
           subject: 'New Contact Form Submission From Euroasia Education Center Website',
           from_name: formData.name,
-          email: formData.email,
+          phone: formData.phone,
           message: formData.message,
           to_email: 'info@euroasiaedu.mn',
         }),
       });
 
+
       const result = await response.json();
 
       if (result.success) {
         setSubmitStatus('success');
-        setFormData({ name: '', email: '', message: '' });
+        setFormData({ name: '', phone: '', message: '' });
         alert('Thank you for your message! We will get back to you soon.');
       } else {
         setSubmitStatus('error');
@@ -46,7 +47,6 @@ export function Contact() {
       }
     } catch (error) {
       setSubmitStatus('error');
-      console.error('Error submitting form:', error);
       alert('Sorry, there was an error sending your message. Please try again.');
     } finally {
       setIsSubmitting(false);
@@ -94,12 +94,12 @@ export function Contact() {
                 </label>
                 <input
                   type="number"
-                  name="email"
-                  value={formData.email}
+                  name="phone"
+                  value={formData.phone}
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 rounded-lg border-2 border-black bg-white focus:outline-none focus:ring-2 focus:ring-[#f9dc6b]"
-                  placeholder="Email"
+                  placeholder="Phone"
                 />
               </div>
             </div>
