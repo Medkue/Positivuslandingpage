@@ -14,7 +14,7 @@ const countryData: Record<string, {
     images: string[];
     schools?: Array<{
         name: string;
-        image: string;
+        image?: string;
     }>;
 }> = {
     usa: {
@@ -31,23 +31,18 @@ const countryData: Record<string, {
         schools: [
             {
                 name: 'Wisconsin Dells, WI',
-                image: '/images/usa-schools/wisconsin-dells.png',
             },
             {
                 name: 'Branson, MO',
-                image: '/images/usa-schools/branson.png',
             },
             {
                 name: 'Pigeon Forge, TN',
-                image: '/images/usa-schools/pigeon-forge.png',
             },
             {
                 name: 'Gatlinburg, TN',
-                image: '/images/usa-schools/gatlinburg.png',
             },
             {
                 name: 'Cape Cod, MA',
-                image: '/images/usa-schools/cape-cod.png',
             },
         ],
     },
@@ -113,8 +108,8 @@ const countryData: Record<string, {
             '/images/china-photos/1.jpg',
             '/images/china-photos/2.jpg',
             '/images/china-photos/3.jpeg',
-            '/images/china-photos/4.jpeg',
-            '/images/china-photos/5.jpeg',
+            '/images/china-photos/4.JPG',
+            '/images/china-photos/5.JPG',
         ],
         schools: [
             {
@@ -295,7 +290,7 @@ function CountriesPageContent() {
                     <section className="px-6 md:px-12 lg:px-20 py-12 md:py-20 bg-gray-50">
                         <div className="max-w-7xl mx-auto">
                             <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-                                Schools & Institutions
+                                {countryCode == 'usa' ? 'Хотууд' : 'Хамтрагч сургуулиуд'}
                             </h2>
                             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
                                 {schools.map((school, index) => (
@@ -303,13 +298,13 @@ function CountriesPageContent() {
                                         key={index}
                                         className="flex  items-center justify-center p-6 bg-white rounded-3xl border-2 border-black shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] rounded-full overflow-hidden px-4 py-2 gap-4"
                                     >
-                                        <Image
+                                        {school.image ? <Image
                                             src={school.image}
                                             alt={school.name}
                                             width={60}
                                             height={60}
                                             className="object-cover rounded-full"
-                                        />
+                                        /> : null}
                                         <h3 className="text-sm md:text-base font-semibold text-center text-gray-800">
                                             {school.name}
                                         </h3>

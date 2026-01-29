@@ -21,6 +21,12 @@ export function Testimonials() {
       image: '/images/testimonials/bilguun.png',
     },
     {
+      quote: "Сайн байна уу? Намайг Номинзул гэдэг. Би 2025 оны 7 сард Европын Боловсролын төвөөр зуучлуулан Ирланд улс Дублин хотод хэлний бэлтгэлээр суралцахаар ирсэн. Англи хэлийг орчинд нь суралцах хүсэлтэй байсан бөгөөд олон орны хүмүүстэй хамт сурч, ажиллаж өөрийн туршлага мэдлэгээ тэлсээр байна. Олон зуучлалын төвүүд дээр очиж уулзаж үзсэн ч Европын Боловсролын төв хамт олон нь их таатай бөгөөд аливаад хариуцлагатай, сэтгэлээсээ ханддаг гэж үзэн зуучлалын төвөө сонгосон.",
+      author: "Амгаланбаатар овогтой Номинзул",
+      position: " iBat College сургуулийн оюутан",
+      image: '/images/testimonials/nominzul.png',
+    },
+    {
       quote: "Сайн байцгаана уу? Би 2024 оны 4-р сард Евроази Боловсролын Төвөөр зуучлуулан Ирланд улсад суралцаж байна. Анх гадаадад суралцахаар шийдсэн үеэс эхлээд хаанаас яаж эхлэхээ мэдэхгүй олон зүйл дээр эргэлзэж байсан. Яг тэр үед Евроази Боловсролын Төв-н зар харж, чат бичээд холбогдоход маш хурдан, ойлгомжтой хариу өгч, эхнээс нь дуустал шат дараатай тайлбарлаж өгсөн нь их итгэл төрүүлсэн. Сургуулийн урилга хугацаандаа ирж, визний материалыг бүрдүүлээд визндээ орсон. Виз гарсан мэдээг сонсоход үнэхээр итгэмээргүй санагдаж, баярлаж догдолсон. Гадаадад суралцах мөрөөдөлтэй залуусдаа Евроази Боловсролын Төв-г санал болгож байна.",
       author: "Болдбаатар овогтой Содбилэг",
       position: " Student Campus сургуулийн оюутан ",
@@ -32,12 +38,7 @@ export function Testimonials() {
       position: "iBat College сургуулийн оюутан",
       image: '/images/testimonials/ynjinlham.png',
     },
-    {
-      quote: "Сайн байна уу? Намайг Номинзул гэдэг. Би 2025 оны 7 сард Европын Боловсролын төвөөр зуучлуулан Ирланд улс Дублин хотод хэлний бэлтгэлээр суралцахаар ирсэн. Англи хэлийг орчинд нь суралцах хүсэлтэй байсан бөгөөд олон орны хүмүүстэй хамт сурч, ажиллаж өөрийн туршлага мэдлэгээ тэлсээр байна. Олон зуучлалын төвүүд дээр очиж уулзаж үзсэн ч Европын Боловсролын төв хамт олон нь их таатай бөгөөд аливаад хариуцлагатай, сэтгэлээсээ ханддаг гэж үзэн зуучлалын төвөө сонгосон.",
-      author: "Амгаланбаатар овогтой Номинзул",
-      position: " iBat College сургуулийн оюутан",
-      image: '/images/testimonials/nominzul.png',
-    }
+
   ];
 
   const nextTestimonial = () => {
@@ -77,9 +78,10 @@ export function Testimonials() {
                     {testimonials[currentIndex].position}
                   </p>
                 </div>
-                <div>
-                  <Image src={testimonials[currentIndex].image} alt={testimonials[currentIndex].author} width={100} height={100} className='rounded-full' style={{ filter: 'grayscale(10%)', objectFit: 'cover' }} />
-                </div>
+
+              </div>
+              <div className='flex md:hidden justify-end items-end'>
+                <Image src={testimonials[currentIndex].image} alt={testimonials[currentIndex].author} width={100} height={100} className='rounded-full' style={{ filter: 'grayscale(10%)', objectFit: 'cover' }} />
               </div>
             </div>
 
@@ -108,8 +110,10 @@ export function Testimonials() {
               </button>
             </div>
           </div>
-          <div className='flex flex-col justify-end items-end hidden md:flex'>
-            <Image src="/images/mail2.svg" alt="Testimonials" width={200} height={200} />
+          <div className='flex flex-col justify-start items-start hidden md:flex'>
+            <div>
+              <Image src={testimonials[currentIndex].image} alt={testimonials[currentIndex].author} width={200} height={200} className='rounded-full' style={{ filter: 'grayscale(10%)', objectFit: 'cover' }} />
+            </div>
           </div>
         </div>
       </div>
