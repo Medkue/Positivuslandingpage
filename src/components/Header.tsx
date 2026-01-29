@@ -1,33 +1,37 @@
+'use client';
+
 import { Menu, X } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
 import { useState } from 'react';
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="py-6 px-6 md:px-12 lg:px-20">
+    <header className="fixed top-0 left-0 right-0 w-full z-[100] bg-white shadow-sm py-6 px-6 md:px-12 lg:px-20">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-black rounded-full flex items-center justify-center">
-            <div className="w-4 h-4 bg-[#B9FF66] rounded-full"></div>
-          </div>
-          <span className="text-2xl font-bold">Positivus</span>
-        </div>
+        <Link href="/">
+          <div className="flex items-center gap-2">
+            <Image src="/images/logo-2.png" alt="Euroasia Education Center" width={40} height={40} />
+            <div className='flex flex-col '>
+              <span className="text-[20px] font-bold text-dark leading-tight">Euroasia</span>
+              <span className="text-[20px] font-bold text-dark leading-tight">Education Center</span>
+            </div>
+          </div></Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8">
-          <a href="#about" className="hover:text-gray-600 transition-colors">About us</a>
-          <a href="#services" className="hover:text-gray-600 transition-colors">Services</a>
-          <a href="#process" className="hover:text-gray-600 transition-colors">Use Cases</a>
-          <a href="#team" className="hover:text-gray-600 transition-colors">Team</a>
-          <a href="#testimonials" className="hover:text-gray-600 transition-colors">Testimonials</a>
-          <button className="px-6 py-3 border-2 border-black rounded-lg hover:bg-black hover:text-white transition-colors">
-            Request a quote
-          </button>
+          {/* <a href="#about" className="hover:text-gray-600 transition-colors">About us</a> */}
+          <a href="#services" className="hover:text-gray-600 transition-colors">Үйлчилгээ</a>
+          <a href="#process" className="hover:text-gray-600 transition-colors">FAQ</a>
+          <a href="#team" className="hover:text-gray-600 transition-colors">Бидний тухай</a>
+          <a href="#testimonials" className="hover:text-gray-600 transition-colors">Сэтгэгдлүүд</a>
+
         </nav>
 
         {/* Mobile Menu Button */}
-        <button 
+        <button
           className="md:hidden"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
@@ -38,14 +42,12 @@ export function Header() {
       {/* Mobile Navigation */}
       {isMenuOpen && (
         <nav className="md:hidden mt-6 flex flex-col gap-4 pb-4">
-          <a href="#about" className="hover:text-gray-600 transition-colors">About us</a>
-          <a href="#services" className="hover:text-gray-600 transition-colors">Services</a>
-          <a href="#process" className="hover:text-gray-600 transition-colors">Use Cases</a>
-          <a href="#team" className="hover:text-gray-600 transition-colors">Team</a>
-          <a href="#testimonials" className="hover:text-gray-600 transition-colors">Testimonials</a>
-          <button className="px-6 py-3 border-2 border-black rounded-lg hover:bg-black hover:text-white transition-colors w-full">
-            Request a quote
-          </button>
+          {/* <a href="#about" className="hover:text-gray-600 transition-colors">About us</a> */}
+          <a href="#services" className="hover:text-gray-600 transition-colors">Үйлчилгээ</a>
+          <a href="#process" className="hover:text-gray-600 transition-colors">FAQ</a>
+          <a href="#team" className="hover:text-gray-600 transition-colors">Бидний тухай</a>
+          <a href="#testimonials" className="hover:text-gray-600 transition-colors">Сэтгэгдлүүд</a>
+
         </nav>
       )}
     </header>

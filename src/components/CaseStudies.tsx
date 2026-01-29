@@ -1,44 +1,73 @@
+
 import { ArrowUpRight } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export function CaseStudies() {
   const caseStudies = [
     {
-      text: 'For a local restaurant, we implemented a targeted PPC campaign that resulted in a 50% increase in website traffic and a 25% increase in sales.',
+      text: 'Шинэ Зеланд улс',
+      image: '/images/new-zealand-photos/1.jpg',
+      country: 'newzealand',
     },
     {
-      text: 'For a B2B software company, we developed an SEO strategy that resulted in a first page ranking for key keywords and a 200% increase in organic traffic.',
+      text: "Ирланд улс",
+      image: '/images/ireland-photos/1.jpeg',
+      country: 'ireland',
+    },
+
+    {
+      text: 'Хятад улс',
+      image: '/images/china-photos/1.JPG',
+      country: 'china',
     },
     {
-      text: 'For a national retail chain, we created a social media marketing campaign that increased followers by 25% and generated a 20% increase in online sales.',
+      text: ' Work & Travel USA',
+      image: '/images/usa-photos/1.jpg',
+      country: 'usa',
     },
   ];
 
   return (
-    <section className="px-6 md:px-12 lg:px-20 py-12 md:py-20 bg-gray-50 rounded-3xl mx-6 md:mx-12 lg:mx-20">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row items-center gap-6 mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold bg-[#B9FF66] px-4 py-2 rounded-lg inline-block">
-            Case Studies
-          </h2>
-          <p className="text-lg text-gray-700 max-w-xl">
-            Explore Real-Life Examples of Our Proven Digital Marketing Success through Our Case Studies
-          </p>
-        </div>
+    // <section className="px-6 md:px-12 lg:px-20 py-12 md:py-20 bg-gray-50 rounded-3xl mx-6 md:mx-12 lg:mx-20">
+    <div className="max-w-7xl mx-auto mt-16">
+      <div className="flex flex-col md:flex-row items-center gap-6 mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold bg-[#f9dc6b] px-4 py-2 rounded-lg inline-block text-gray-700">
+          Суралцах улсууд
+        </h2>
 
-        <div className="bg-black text-white rounded-3xl p-8 md:p-12">
-          <div className="grid md:grid-cols-3 gap-8 md:divide-x divide-[#B9FF66]">
-            {caseStudies.map((study, idx) => (
-              <div key={idx} className="md:px-6 first:pl-0 last:pr-0">
-                <p className="text-lg mb-4">{study.text}</p>
-                <button className="text-[#B9FF66] flex items-center gap-2 hover:gap-3 transition-all group">
-                  <span>Learn more</span>
-                  <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:translate-y-[-2px] transition-transform" />
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
-    </section>
+
+      {/* <div className="bg-gray-100 text-white rounded-3xl p-8 md:p-12 border-2 border-black shadow-[5px_5px_0px_0px_rgba(0,0,0,1)]" > */}
+      <div className="grid md:grid-cols-4  gap-8">
+        {caseStudies.map((study, idx) => (
+          <Link key={idx} href={`/countries?country=${study.country}`}>
+            <div className="md:px-6 first:pl-0  shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] last:pr-0 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[7px_7px_0px_0px_rgba(0,0,0,1)] transition-all rounded-3xl overflow-hidden">
+              <div className='relative w-full h-[300px] rounded-3xl overflow-hidden '>
+                <Image
+                  src={study.image}
+                  alt={study.text}
+                  fill
+                  className='object-cover'
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 25vw, 25vw"
+                  unoptimized
+                  style={{ objectFit: 'cover' }}
+                />
+              </div>
+              <div className='px-4 flex flex-col justify-between h-full items-center p-4'>
+                <p className=" text-dark mb-4 text-black text-xl font-bold" style={{ textAlign: 'center' }}>{study.text}</p>
+                <div className='flex items-center gap-1'>
+                  <span className="text-sm text-black font-bold hover:text-dark hover:underline">Дэлгэрэнгүй</span>
+                  <ArrowUpRight className='w-4 h-4' color='#195700' />
+                </div>
+
+              </div>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </div>
+    // </div>
+    // </div >
   );
 }

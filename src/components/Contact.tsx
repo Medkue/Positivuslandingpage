@@ -1,3 +1,6 @@
+'use client';
+
+import Image from 'next/image';
 import { useState } from 'react';
 
 export function Contact() {
@@ -6,13 +9,48 @@ export function Contact() {
     email: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message! We will get back to you soon.');
-    setFormData({ name: '', email: '', message: '' });
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || '',
+          subject: 'New Contact Form Submission From Euroasia Education Center Website',
+          from_name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          to_email: 'info@euroasiaedu.mn',
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+        alert('Thank you for your message! We will get back to you soon.');
+      } else {
+        setSubmitStatus('error');
+        alert('Sorry, there was an error sending your message. Please try again.');
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+      console.error('Error submitting form:', error);
+      alert('Sorry, there was an error sending your message. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -26,20 +64,18 @@ export function Contact() {
     <section className="px-6 md:px-12 lg:px-20 py-12 md:py-20">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row items-center gap-6 mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold bg-[#B9FF66] px-4 py-2 rounded-lg inline-block">
-            Contact Us
+          <h2 className="text-3xl md:text-4xl font-bold bg-[#f9dc6b] px-4 py-2 rounded-lg inline-block text-gray-700">
+            Бидэнтэй холбогдох
           </h2>
-          <p className="text-lg text-gray-700 max-w-xl">
-            Connect with Us: Let's Discuss Your Digital Marketing Needs
-          </p>
+
         </div>
 
-        <div className="bg-gray-100 rounded-3xl p-8 md:p-12 border-2 border-black">
-          <form onSubmit={handleSubmit} className="max-w-2xl space-y-6">
-            <div className="grid md:grid-cols-2 gap-6">
+        <div className="bg-gray-100 rounded-3xl p-8 md:p-12 border-2 border-black flex flex-col md:flex-row justify-between items-center gap-6">
+          <form onSubmit={handleSubmit} className="w-full space-y-6">
+            <div className="grid md:grid-cols-2 gap-6 max-w-5xl">
               <div>
                 <label className="block mb-2">
-                  Name
+                  Нэр
                 </label>
                 <input
                   type="text"
@@ -47,22 +83,22 @@ export function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-lg border-2 border-black bg-white focus:outline-none focus:ring-2 focus:ring-[#B9FF66]"
+                  className="w-full px-4 py-3 rounded-lg border-2 border-black bg-white focus:outline-none focus:ring-2 focus:ring-[#f9dc6b]"
                   placeholder="Name"
                 />
               </div>
-              
+
               <div>
                 <label className="block mb-2">
-                  Email*
+                  Утасны дугаар*
                 </label>
                 <input
-                  type="email"
+                  type="number"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-lg border-2 border-black bg-white focus:outline-none focus:ring-2 focus:ring-[#B9FF66]"
+                  className="w-full px-4 py-3 rounded-lg border-2 border-black bg-white focus:outline-none focus:ring-2 focus:ring-[#f9dc6b]"
                   placeholder="Email"
                 />
               </div>
@@ -70,7 +106,7 @@ export function Contact() {
 
             <div>
               <label className="block mb-2">
-                Message*
+                Мессеж*
               </label>
               <textarea
                 name="message"
@@ -78,16 +114,17 @@ export function Contact() {
                 onChange={handleChange}
                 required
                 rows={6}
-                className="w-full px-4 py-3 rounded-lg border-2 border-black bg-white focus:outline-none focus:ring-2 focus:ring-[#B9FF66] resize-none"
+                className="w-full px-4 py-3 rounded-lg border-2 border-black bg-white focus:outline-none focus:ring-2 focus:ring-[#f9dc6b] resize-none"
                 placeholder="Message"
               />
             </div>
 
             <button
               type="submit"
-              className="px-8 py-4 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors w-full md:w-auto"
+              disabled={isSubmitting}
+              className="px-8 py-4 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors w-full md:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Send Message
+              {isSubmitting ? 'Илгээж байна...' : 'Мессеж илгээх'}
             </button>
           </form>
         </div>

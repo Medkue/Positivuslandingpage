@@ -1,3 +1,7 @@
+'use client';
+
+import { CameraIcon } from 'lucide-react';
+/* eslint-disable @next/next/no-img-element -- ImageWithFallback uses <img> for external URLs and error-state fallback */
 import React, { useState } from 'react'
 
 const ERROR_IMG_SRC =
@@ -18,7 +22,7 @@ export function ImageWithFallback(props: React.ImgHTMLAttributes<HTMLImageElemen
       style={style}
     >
       <div className="flex items-center justify-center w-full h-full">
-        <img src={ERROR_IMG_SRC} alt="Error loading image" {...rest} data-original-url={src} />
+        <CameraIcon className='w-10 h-10 text-gray-400' />
       </div>
     </div>
   ) : (

@@ -1,7 +1,11 @@
 /*! tailwindcss v4.1.3 | MIT License | https://tailwindcss.com */
 @layer properties {
   @supports (((-webkit-hyphens: none)) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color: rgb(from red r g b)))) {
-    *, :before, :after, ::backdrop {
+
+    *,
+    :before,
+    :after,
+    ::backdrop {
       --tw-space-y-reverse: 0;
       --tw-border-style: solid;
       --tw-leading: initial;
@@ -42,7 +46,9 @@
 }
 
 @layer theme {
-  :root, :host {
+
+  :root,
+  :host {
     --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     --color-gray-50: oklch(.985 .002 247.839);
@@ -52,8 +58,10 @@
     --color-gray-400: oklch(.707 .022 261.325);
     --color-gray-600: oklch(.446 .03 256.802);
     --color-gray-700: oklch(.373 .034 259.733);
+    /* --color-gray-700: #1D6002; */
     --color-gray-800: oklch(.278 .033 256.848);
-    --color-black: #000;
+    --color-black: #65a638;
+    --color-dark: #195700;
     --color-white: #fff;
     --spacing: .25rem;
     --container-xl: 36rem;
@@ -95,7 +103,11 @@
 }
 
 @layer base {
-  *, :after, :before, ::backdrop {
+
+  *,
+  :after,
+  :before,
+  ::backdrop {
     box-sizing: border-box;
     border: 0 solid;
     margin: 0;
@@ -109,7 +121,8 @@
     padding: 0;
   }
 
-  html, :host {
+  html,
+  :host {
     -webkit-text-size-adjust: 100%;
     tab-size: 4;
     line-height: 1.5;
@@ -134,7 +147,12 @@
     text-decoration: underline dotted;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-size: inherit;
     font-weight: inherit;
   }
@@ -146,11 +164,15 @@
     text-decoration: inherit;
   }
 
-  b, strong {
+  b,
+  strong {
     font-weight: bolder;
   }
 
-  code, kbd, samp, pre {
+  code,
+  kbd,
+  samp,
+  pre {
     font-family: var(--default-mono-font-family, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);
     font-feature-settings: var(--default-mono-font-feature-settings, normal);
     font-variation-settings: var(--default-mono-font-variation-settings, normal);
@@ -161,7 +183,8 @@
     font-size: 80%;
   }
 
-  sub, sup {
+  sub,
+  sup {
     vertical-align: baseline;
     font-size: 75%;
     line-height: 0;
@@ -194,21 +217,35 @@
     display: list-item;
   }
 
-  ol, ul, menu {
+  ol,
+  ul,
+  menu {
     list-style: none;
   }
 
-  img, svg, video, canvas, audio, iframe, embed, object {
+  img,
+  svg,
+  video,
+  canvas,
+  audio,
+  iframe,
+  embed,
+  object {
     vertical-align: middle;
     display: block;
   }
 
-  img, video {
+  img,
+  video {
     max-width: 100%;
     height: auto;
   }
 
-  button, input, select, optgroup, textarea {
+  button,
+  input,
+  select,
+  optgroup,
+  textarea {
     font: inherit;
     font-feature-settings: inherit;
     font-variation-settings: inherit;
@@ -314,7 +351,8 @@
     box-shadow: none;
   }
 
-  button, input:where([type="button"], [type="reset"], [type="submit"]) {
+  button,
+  input:where([type="button"], [type="reset"], [type="submit"]) {
     appearance: button;
   }
 
@@ -386,7 +424,9 @@
     line-height: 1.5;
   }
 
-  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) h4, :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) label, :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) button {
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) h4,
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) label,
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) button {
     font-size: var(--text-base);
     font-weight: var(--font-weight-medium);
     line-height: 1.5;
@@ -406,6 +446,30 @@
 
   .relative {
     position: relative;
+  }
+
+  .fixed {
+    position: fixed;
+  }
+
+  .z-\[100\] {
+    z-index: 100;
+  }
+
+  .top-0 {
+    top: 0;
+  }
+
+  .left-0 {
+    left: 0;
+  }
+
+  .right-0 {
+    right: 0;
+  }
+
+  .shadow-sm {
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   }
 
   .-top-6 {
@@ -540,6 +604,42 @@
     height: 100%;
   }
 
+  .h-\[32px\] {
+    height: 320px;
+  }
+
+  .h-\[40px\] {
+    height: 40px;
+  }
+
+  .h-\[150px\] {
+    height: 150px;
+  }
+
+  .h-\[180px\] {
+    height: 180px;
+  }
+
+  .h-\[200px\] {
+    height: 200px;
+  }
+
+  .h-\[300px\] {
+    height: 300px;
+  }
+
+  .h-\[400px\] {
+    height: 400px;
+  }
+
+  .h-\[500px\] {
+    height: 500px;
+  }
+
+  .h-\[600px\] {
+    height: 600px;
+  }
+
   .min-h-screen {
     min-height: 100vh;
   }
@@ -602,6 +702,14 @@
 
   .flex-1 {
     flex: 1;
+  }
+
+  .flex-2 {
+    flex: 2;
+  }
+
+  .flex-3 {
+    flex: 3;
   }
 
   .grow {
@@ -680,8 +788,8 @@
     margin-block-end: calc(calc(var(--spacing) * 6) * calc(1 - var(--tw-space-y-reverse)));
   }
 
-  :where(.divide-\[\#B9FF66\] > :not(:last-child)) {
-    border-color: #b9ff66;
+  :where(.divide-\[\#f9dc6b\] > :not(:last-child)) {
+    border-color: #f9dc6b;
   }
 
   .overflow-hidden {
@@ -736,12 +844,20 @@
     background-color: #292a32;
   }
 
-  .bg-\[\#B9FF66\] {
-    background-color: #b9ff66;
+  .bg-\[\#f9dc6b\] {
+    background-color: #f9dc6b;
+  }
+
+  .bg-\[\#FFEFB1\] {
+    background-color: #FFEFB1;
   }
 
   .bg-black {
     background-color: var(--color-black);
+  }
+
+  .bg-dark {
+    background-color: var(--color-dark);
   }
 
   .bg-gray-50 {
@@ -766,6 +882,10 @@
 
   .object-cover {
     object-fit: cover;
+  }
+
+  .p-4 {
+    padding: calc(var(--spacing) * 4);
   }
 
   .p-8 {
@@ -810,6 +930,10 @@
 
   .pt-8 {
     padding-top: calc(var(--spacing) * 8);
+  }
+
+  .pt-20 {
+    padding-top: calc(var(--spacing) * 20);
   }
 
   .pb-4 {
@@ -885,8 +1009,8 @@
     white-space: nowrap;
   }
 
-  .text-\[\#B9FF66\] {
-    color: #b9ff66;
+  .text-\[\#f9dc6b\] {
+    color: #f9dc6b;
   }
 
   .text-black {
@@ -898,7 +1022,7 @@
   }
 
   .text-gray-600 {
-    color: var(--color-gray-600);
+    color: var(--color--600);
   }
 
   .text-gray-700 {
@@ -907,6 +1031,10 @@
 
   .text-white {
     color: var(--color-white);
+  }
+
+  .text-dark {
+    color: var(--color-dark);
   }
 
   .underline {
@@ -918,7 +1046,7 @@
   }
 
   .shadow-\[5px_5px_0px_0px_rgba\(0\,0\,0\,1\)\] {
-    --tw-shadow: 5px 5px 0px 0px var(--tw-shadow-color, #000);
+    --tw-shadow: 5px 5px 0px 0px var(--color-black);
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
 
@@ -995,8 +1123,8 @@
   }
 
   @media (hover: hover) {
-    .hover\:bg-\[\#B9FF66\]:hover {
-      background-color: #b9ff66;
+    .hover\:bg-\[\#f9dc6b\]:hover {
+      background-color: #f9dc6b;
     }
   }
 
@@ -1025,8 +1153,8 @@
   }
 
   @media (hover: hover) {
-    .hover\:text-\[\#B9FF66\]:hover {
-      color: #b9ff66;
+    .hover\:text-\[\#f9dc6b\]:hover {
+      color: #f9dc6b;
     }
   }
 
@@ -1044,7 +1172,7 @@
 
   @media (hover: hover) {
     .hover\:shadow-\[7px_7px_0px_0px_rgba\(0\,0\,0\,1\)\]:hover {
-      --tw-shadow: 7px 7px 0px 0px var(--tw-shadow-color, #000);
+      --tw-shadow: 7px 7px 0px 0px var(--color-black);
       box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
     }
   }
@@ -1054,8 +1182,8 @@
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
 
-  .focus\:ring-\[\#B9FF66\]:focus {
-    --tw-ring-color: #b9ff66;
+  .focus\:ring-\[\#f9dc6b\]:focus {
+    --tw-ring-color: #f9dc6b;
   }
 
   .focus\:outline-none:focus {
@@ -1063,61 +1191,77 @@
     outline-style: none;
   }
 
-  @media (width >= 48rem) {
+  .hover\:underline:hover {
+    text-decoration-line: underline;
+  }
+
+  @media (width >=48rem) {
     .md\:mx-12 {
       margin-inline: calc(var(--spacing) * 12);
     }
   }
 
-  @media (width >= 48rem) {
+  @media (width >=48rem) {
     .md\:flex {
       display: flex;
     }
   }
 
-  @media (width >= 48rem) {
+  @media (width >=48rem) {
     .md\:hidden {
       display: none;
     }
   }
 
-  @media (width >= 48rem) {
+  @media (width >=48rem) {
     .md\:w-48 {
       width: calc(var(--spacing) * 48);
     }
   }
 
-  @media (width >= 48rem) {
+  @media (width >=48rem) {
     .md\:w-auto {
       width: auto;
     }
   }
 
-  @media (width >= 48rem) {
+  @media (width >=48rem) {
     .md\:grid-cols-2 {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 
-  @media (width >= 48rem) {
+  @media (width >=48rem) {
     .md\:grid-cols-3 {
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
 
-  @media (width >= 48rem) {
+  @media (width >=48rem) {
+    .md\:grid-cols-4 {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  @media (width >=48rem) {
+    .md\:grid-cols-5 {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+  }
+
+  @media (width >=48rem) {
     .md\:flex-row {
       flex-direction: row;
     }
   }
 
-  @media (width >= 48rem) {
+  @media (width >=48rem) {
     .md\:justify-between {
       justify-content: space-between;
     }
   }
 
-  @media (width >= 48rem) {
+  @media (width >=48rem) {
     :where(.md\:divide-x > :not(:last-child)) {
       --tw-divide-x-reverse: 0;
       border-inline-style: var(--tw-border-style);
@@ -1126,84 +1270,84 @@
     }
   }
 
-  @media (width >= 48rem) {
+  @media (width >=48rem) {
     .md\:p-12 {
       padding: calc(var(--spacing) * 12);
     }
   }
 
-  @media (width >= 48rem) {
+  @media (width >=48rem) {
     .md\:px-6 {
       padding-inline: calc(var(--spacing) * 6);
     }
   }
 
-  @media (width >= 48rem) {
+  @media (width >=48rem) {
     .md\:px-12 {
       padding-inline: calc(var(--spacing) * 12);
     }
   }
 
-  @media (width >= 48rem) {
+  @media (width >=48rem) {
     .md\:py-20 {
       padding-block: calc(var(--spacing) * 20);
     }
   }
 
-  @media (width >= 48rem) {
+  @media (width >=48rem) {
     .md\:text-2xl {
       font-size: var(--text-2xl);
       line-height: var(--tw-leading, var(--text-2xl--line-height));
     }
   }
 
-  @media (width >= 48rem) {
+  @media (width >=48rem) {
     .md\:text-3xl {
       font-size: var(--text-3xl);
       line-height: var(--tw-leading, var(--text-3xl--line-height));
     }
   }
 
-  @media (width >= 48rem) {
+  @media (width >=48rem) {
     .md\:text-4xl {
       font-size: var(--text-4xl);
       line-height: var(--tw-leading, var(--text-4xl--line-height));
     }
   }
 
-  @media (width >= 48rem) {
+  @media (width >=48rem) {
     .md\:text-5xl {
       font-size: var(--text-5xl);
       line-height: var(--tw-leading, var(--text-5xl--line-height));
     }
   }
 
-  @media (width >= 48rem) {
+  @media (width >=48rem) {
     .md\:text-xl {
       font-size: var(--text-xl);
       line-height: var(--tw-leading, var(--text-xl--line-height));
     }
   }
 
-  @media (width >= 64rem) {
+  @media (width >=64rem) {
     .lg\:mx-20 {
       margin-inline: calc(var(--spacing) * 20);
     }
   }
 
-  @media (width >= 64rem) {
-    .lg\:grid-cols-3 {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+  @media (width >=64rem) {
+    .lg\:grid-cols-4 {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
     }
   }
 
-  @media (width >= 64rem) {
+  @media (width >=64rem) {
     .lg\:px-20 {
       padding-inline: calc(var(--spacing) * 20);
     }
   }
 
-  @media (width >= 64rem) {
+  @media (width >=64rem) {
     .lg\:text-6xl {
       font-size: var(--text-6xl);
       line-height: var(--tw-leading, var(--text-6xl--line-height));
