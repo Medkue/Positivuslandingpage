@@ -17,7 +17,7 @@ export function Hero() {
 
           </div>
 
-          <div className="relative flex justify-center">
+          <div className="relative flex justify-center hidden md:flex">
             <Image
               src='/images/euroasia.png'
               alt="Marketing illustration"
@@ -34,7 +34,7 @@ export function Hero() {
             Бидний туршлага
           </h2>
 
-          <div className="grid w-full md:max-w-3xl grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6">
+          <div className="grid w-full grid-cols-2 md:max-w-3xl  md:grid-cols-4 lg:grid-cols-4 gap-6">
             <div className="bg-white rounded-2xl p-4 border-2 border-black shadow-[0_4px_14px_0_rgba(0,0,0,0.08)] flex flex-col gap-2 items-center justify-center shadow-[5px_5px_0px_0px_rgba(0,0,0,1)]">
               <span className="text-3xl md:text-4xl font-bold text-black">4</span>
               <span className="text-black text-lg">Улс</span>

@@ -16,11 +16,11 @@ function ProcessStep({ number, title, description, isOpen, onToggle }: ProcessSt
     <div className="bg-gray-100 rounded-3xl border-2 border-black shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] overflow-hidden">
       <button
         onClick={onToggle}
-        className="w-full p-8 flex items-center justify-between hover:bg-gray-200 transition-colors"
+        className="w-full p-4 md:p-8 flex items-center justify-between hover:bg-gray-200 transition-colors"
       >
         <div className="flex items-center gap-6">
-          <span className="text-4xl md:text-5xl font-bold text-gray-700">{number}</span>
-          <span className="text-xl md:text-2xl font-bold text-left text-gray-700">{title}</span>
+          <span className="text-2xl md:text-4xl font-bold text-gray-700">{number}</span>
+          <span className="text-lg md:text-2xl font-bold text-left text-gray-700">{title}</span>
         </div>
         <div className={`w-12 h-12 rounded-full flex items-center justify-center transition-colors ${isOpen ? 'bg-[#f9dc6b]' : 'bg-gray-300'}`}>
           {isOpen ? <Minus className="w-6 h-6" /> : <Plus className="w-6 h-6" />}
@@ -29,7 +29,7 @@ function ProcessStep({ number, title, description, isOpen, onToggle }: ProcessSt
 
       {isOpen && (
         <div className="px-8 pb-8 border-t-2 border-black pt-6">
-          <p className="text-lg text-gray-700 max-w-3xl">
+          <p className="text-sm md:text-lg text-gray-700 max-w-3xl">
             {description}
           </p>
         </div>

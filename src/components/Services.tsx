@@ -21,7 +21,7 @@ function ServiceCard({ title, description, bgColor, textColor = 'text-black' }: 
             ))}
           </h3>
           <div className="w-full">
-            <p className="text-lg">
+            <p className="text-sm md:text-lg">
               {description}
             </p>
           </div>
@@ -84,7 +84,7 @@ export function Services() {
 
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {services.map((service, idx) => (
             <ServiceCard key={idx} {...service} />
           ))}

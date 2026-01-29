@@ -39,11 +39,11 @@ export function CaseStudies() {
       </div>
 
       {/* <div className="bg-gray-100 text-white rounded-3xl p-8 md:p-12 border-2 border-black shadow-[5px_5px_0px_0px_rgba(0,0,0,1)]" > */}
-      <div className="grid md:grid-cols-4  gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-4  gap-8 px-4 md:px-0">
         {caseStudies.map((study, idx) => (
           <Link key={idx} href={`/countries?country=${study.country}`}>
             <div className="md:px-6 first:pl-0  shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] last:pr-0 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[7px_7px_0px_0px_rgba(0,0,0,1)] transition-all rounded-3xl overflow-hidden">
-              <div className='relative w-full h-[300px] rounded-3xl overflow-hidden '>
+              <div className='relative w-full h-[150px]  md:h-[300px] rounded-3xl overflow-hidden '>
                 <Image
                   src={study.image}
                   alt={study.text}
@@ -55,9 +55,9 @@ export function CaseStudies() {
                 />
               </div>
               <div className='px-4 flex flex-col justify-between h-full items-center p-4'>
-                <p className=" text-dark mb-4 text-black text-xl font-bold" style={{ textAlign: 'center' }}>{study.text}</p>
+                <p className=" text-dark mb-4 text-black text-sm md:text-xl font-bold" style={{ textAlign: 'center' }}>{study.text}</p>
                 <div className='flex items-center gap-1'>
-                  <span className="text-sm text-black font-bold hover:text-dark hover:underline">Дэлгэрэнгүй</span>
+                  <span className="text-xs md:text-sm text-black font-bold hover:text-dark hover:underline">Дэлгэрэнгүй</span>
                   <ArrowUpRight className='w-4 h-4' color='#195700' />
                 </div>
 
