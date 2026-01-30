@@ -19,10 +19,10 @@ export function Hero() {
 
           <div className="relative flex justify-center hidden md:flex">
             <Image
-              src='/images/euroasia.png'
+              src='/images/logo.GIF'
               alt="Marketing illustration"
-              width={400}
-              height={400}
+              width={500}
+              height={500}
             />
           </div>
         </div>
