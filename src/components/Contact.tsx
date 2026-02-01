@@ -2,12 +2,14 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 export function Contact() {
+  const t = useTranslations('contact');
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
-    message: ''
+    message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -22,11 +24,11 @@ export function Contact() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Accept': 'application/json',
+          Accept: 'application/json',
         },
         body: JSON.stringify({
           access_key: 'b9b09269-ca80-4887-b5ff-c07b020aad4f',
-          subject: 'New Contact Form Submission From Euroasia Education Center Website',
+          subject: `New Contact from Website - ${formData.name}`,
           from_name: formData.name,
           phone: formData.phone,
           message: formData.message,
@@ -34,29 +36,28 @@ export function Contact() {
         }),
       });
 
-
       const result = await response.json();
 
       if (result.success) {
         setSubmitStatus('success');
         setFormData({ name: '', phone: '', message: '' });
-        alert('Thank you for your message! We will get back to you soon.');
+        alert(t('successAlert'));
       } else {
         setSubmitStatus('error');
-        alert('Sorry, there was an error sending your message. Please try again.');
+        alert(t('errorAlert'));
       }
     } catch (error) {
       setSubmitStatus('error');
-      alert('Sorry, there was an error sending your message. Please try again.');
+      alert(t('errorAlert'));
     } finally {
       setIsSubmitting(false);
     }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }));
   };
 
@@ -65,18 +66,15 @@ export function Contact() {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row items-center gap-6 mb-12">
           <h2 className="text-3xl md:text-4xl font-bold bg-[#f9dc6b] px-4 py-2 rounded-lg inline-block text-gray-700">
-            Бидэнтэй холбогдох
+            {t('title')}
           </h2>
-
         </div>
 
         <div className="bg-gray-100 rounded-3xl p-8 md:p-12 border-2 border-black flex flex-col md:flex-row justify-between items-center gap-6">
           <form onSubmit={handleSubmit} className="w-full space-y-6">
             <div className="grid md:grid-cols-2 gap-6 max-w-5xl">
               <div>
-                <label className="block mb-2">
-                  Нэр
-                </label>
+                <label className="block mb-2">{t('nameLabel')}</label>
                 <input
                   type="text"
                   name="name"
@@ -84,14 +82,12 @@ export function Contact() {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 rounded-lg border-2 border-black bg-white focus:outline-none focus:ring-2 focus:ring-[#f9dc6b]"
-                  placeholder="Name"
+                  placeholder={t('namePlaceholder')}
                 />
               </div>
 
               <div>
-                <label className="block mb-2">
-                  Утасны дугаар*
-                </label>
+                <label className="block mb-2">{t('phoneLabel')}</label>
                 <input
                   type="number"
                   name="phone"
@@ -99,15 +95,13 @@ export function Contact() {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 rounded-lg border-2 border-black bg-white focus:outline-none focus:ring-2 focus:ring-[#f9dc6b]"
-                  placeholder="Phone"
+                  placeholder={t('phonePlaceholder')}
                 />
               </div>
             </div>
 
             <div>
-              <label className="block mb-2">
-                Мессеж*
-              </label>
+              <label className="block mb-2">{t('messageLabel')}</label>
               <textarea
                 name="message"
                 value={formData.message}
@@ -115,7 +109,7 @@ export function Contact() {
                 required
                 rows={6}
                 className="w-full px-4 py-3 rounded-lg border-2 border-black bg-white focus:outline-none focus:ring-2 focus:ring-[#f9dc6b] resize-none"
-                placeholder="Message"
+                placeholder={t('messagePlaceholder')}
               />
             </div>
 
@@ -124,7 +118,7 @@ export function Contact() {
               disabled={isSubmitting}
               className="px-8 py-4 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors w-full md:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {isSubmitting ? 'Илгээж байна...' : 'Мессеж илгээх'}
+              {isSubmitting ? t('submitting') : t('submit')}
             </button>
           </form>
         </div>

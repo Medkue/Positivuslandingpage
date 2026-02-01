@@ -3,43 +3,27 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
+
+const TESTIMONIAL_KEYS = ['margad', 'bilguun', 'nominzul', 'sodbileg', 'ynjinlham'] as const;
+const images: Record<string, string> = {
+  margad: '/images/testimonials/margad.png',
+  bilguun: '/images/testimonials/bilguun.png',
+  nominzul: '/images/testimonials/nominzul.png',
+  sodbileg: '/images/sodbileg.png',
+  ynjinlham: '/images/testimonials/ynjinlham.png',
+};
 
 export function Testimonials() {
+  const t = useTranslations('testimonials');
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const testimonials = [
-    {
-      quote: "Евроази боловсролын төвөөр зуучлуулахад сэтгэгдэл их өндөр байсан. Мэдэхгүй чадахгүй зүйл их байсан ч бүгдийг нь эхнээс нь зааж тайлбарлаж өгсөн. Мөн сургуулийн урилга яг хэлсэн хугацаандаа ирсэн виз гарахад ч мөн адил ямар нэгэн асуудал байхгүй хялбархан гарсан болохоор сонгосондоо маш сэтгэл хангалуун байна.",
-      author: "Сонинпил овогтой Маргад",
-      position: "Nanjing Aeronautics And Astronautics University сургуулийн оюутан",
-      image: '/images/testimonials/margad.png',
-    },
-    {
-      quote: 'Сайн байна уу? Намайг Билгүүн гэдэг. Би 2025 оны 6-р сард Европын Боловсролын Төвөөр зуучлуулан Ирланд улсын Лимерик хотод хэлний бэлтгэлээр суралцахаар ирсэн. Анх 1-р сарын 31-нд Facebook-ээс нь зар харж, мэдээд шууд холбогдсон. Тэр үед цуглуулсан мөнгөө харсан чинь яг таарч, шууд холбогдож хурдан шуурхай хариу авснаар бүртгүүлж амжсан байдаг. Үүнээс өмнө Солонгос руу хоёр удаа виз мэдүүлээд татгалзсан хариу авч, Монголдоо л сайхан амьдаръя гэж бодож байсан боловч найдвартай газраар зуучлуулж үзье гэж шийдсэн. Визийн материалаа тайван бэлдэж, 3-р сарын 19-нд мэдүүлээд 5-р сарын эхээр виз гарсныг сонсоход үнэхээр их баярлаж, догдолсон. Виз мэдүүлэх бүх үйл явцад хурдан, найдвартай, маш сайн дэмжиж ажилласан Европын Боловсролын Төвийн хамт олонд чин сэтгэлээсээ талархаж байна. Олон залуусын мөрөөдөлд итгэл өгдөг сайхан хамт олон шүү. 🌍✨ ',
-      author: "Отгончимэг овогтой Билгүүн",
-      position: "NED Limerick сургуулийн оюутан ",
-      image: '/images/testimonials/bilguun.png',
-    },
-    {
-      quote: "Сайн байна уу? Намайг Номинзул гэдэг. Би 2025 оны 7 сард Европын Боловсролын төвөөр зуучлуулан Ирланд улс Дублин хотод хэлний бэлтгэлээр суралцахаар ирсэн. Англи хэлийг орчинд нь суралцах хүсэлтэй байсан бөгөөд олон орны хүмүүстэй хамт сурч, ажиллаж өөрийн туршлага мэдлэгээ тэлсээр байна. Олон зуучлалын төвүүд дээр очиж уулзаж үзсэн ч Европын Боловсролын төв хамт олон нь их таатай бөгөөд аливаад хариуцлагатай, сэтгэлээсээ ханддаг гэж үзэн зуучлалын төвөө сонгосон.",
-      author: "Амгаланбаатар овогтой Номинзул",
-      position: " iBat College сургуулийн оюутан",
-      image: '/images/testimonials/nominzul.png',
-    },
-    {
-      quote: "Сайн байцгаана уу? Би 2024 оны 4-р сард Евроази Боловсролын Төвөөр зуучлуулан Ирланд улсад суралцаж байна. Анх гадаадад суралцахаар шийдсэн үеэс эхлээд хаанаас яаж эхлэхээ мэдэхгүй олон зүйл дээр эргэлзэж байсан. Яг тэр үед Евроази Боловсролын Төв-н зар харж, чат бичээд холбогдоход маш хурдан, ойлгомжтой хариу өгч, эхнээс нь дуустал шат дараатай тайлбарлаж өгсөн нь их итгэл төрүүлсэн. Сургуулийн урилга хугацаандаа ирж, визний материалыг бүрдүүлээд визндээ орсон. Виз гарсан мэдээг сонсоход үнэхээр итгэмээргүй санагдаж, баярлаж догдолсон. Гадаадад суралцах мөрөөдөлтэй залуусдаа Евроази Боловсролын Төв-г санал болгож байна.",
-      author: "Болдбаатар овогтой Содбилэг",
-      position: " Student Campus сургуулийн оюутан ",
-      image: '/images/testimonials/sodbileg.JPG',
-    },
-    {
-      quote: 'Сайн байна уу? Би Евроази Боловсролын Төвөөр зуучлуулан Ирландад ирсэн. Эелдэг, түргэн шуурхай, хариуцлагатай байгууллага санагдсан учраас тэднийг сонгосон юм. Одоогоор Ирландад ирээд зургаан сар болж байна. Чимээгүй, тайван орчинд амьдрах дуртай хүмүүст бол үнэхээр санал болгохуйц газар гэж бодож байна. ',
-      author: "Батзориг овогтой Янжинлхам",
-      position: "iBat College сургуулийн оюутан",
-      image: '/images/testimonials/ynjinlham.png',
-    },
-
-  ];
+  const testimonials = TESTIMONIAL_KEYS.map((key) => ({
+    quote: t(`items.${key}.quote`),
+    author: t(`items.${key}.author`),
+    position: t(`items.${key}.position`),
+    image: images[key],
+  }));
 
   const nextTestimonial = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
@@ -54,34 +38,33 @@ export function Testimonials() {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row items-center gap-6 mb-12">
           <h2 className="text-3xl text-gray-700 md:text-4xl md:text-gray-700 font-bold bg-[#f9dc6b] px-4 py-2 rounded-lg inline-block">
-            Сэтгэгдлүүд
+            {t('title')}
           </h2>
-
         </div>
 
         <div className="bg-black text-white rounded-3xl p-4 md:p-12 relative flex flex-row justify-between items-end">
           <div className="flex flex-col md:flex-col justify-end items-start gap-6">
             <div className="max-w-4xl">
               <div className="mb-8 relative">
-                <div className="absolute -top-6 -left-2 text-[#f9dc6b] text-6xl font-bold ">&quot;</div>
-                <p className="text-sm md:text-xl leading-relaxed pl-0 md:pl-8">
-                  {testimonials[currentIndex].quote}
-                </p>
+                <div className="absolute -top-6 -left-2 text-[#f9dc6b] text-6xl font-bold">&quot;</div>
+                <p className="text-sm md:text-xl leading-relaxed pl-0 md:pl-8">{testimonials[currentIndex].quote}</p>
               </div>
 
-              <div className='flex flex-row gap-4'>
+              <div className="flex flex-row gap-4">
                 <div>
-                  <p className="font-bold text-[#f9dc6b] text-lg">
-                    {testimonials[currentIndex].author}
-                  </p>
-                  <p className="text-[#ffb800]">
-                    {testimonials[currentIndex].position}
-                  </p>
+                  <p className="font-bold text-[#f9dc6b] text-lg">{testimonials[currentIndex].author}</p>
+                  <p className="text-[#ffb800]">{testimonials[currentIndex].position}</p>
                 </div>
-
               </div>
-              <div className='flex md:hidden justify-end items-end'>
-                <Image src={testimonials[currentIndex].image} alt={testimonials[currentIndex].author} width={100} height={100} className='rounded-full' style={{ filter: 'grayscale(10%)', objectFit: 'cover' }} />
+              <div className="flex md:hidden justify-end items-end">
+                <Image
+                  src={testimonials[currentIndex].image}
+                  alt={testimonials[currentIndex].author}
+                  width={100}
+                  height={100}
+                  className="rounded-full"
+                  style={{ filter: 'grayscale(10%)', objectFit: 'cover' }}
+                />
               </div>
             </div>
 
@@ -97,8 +80,7 @@ export function Testimonials() {
                   <button
                     key={idx}
                     onClick={() => setCurrentIndex(idx)}
-                    className={`w-3 h-3 rounded-full transition-colors ${idx === currentIndex ? 'bg-[#f9dc6b]' : 'bg-gray-600'
-                      }`}
+                    className={`w-3 h-3 rounded-full transition-colors ${idx === currentIndex ? 'bg-[#f9dc6b]' : 'bg-gray-600'}`}
                   />
                 ))}
               </div>
@@ -110,9 +92,16 @@ export function Testimonials() {
               </button>
             </div>
           </div>
-          <div className='flex flex-col justify-start items-start hidden md:flex'>
+          <div className="flex flex-col justify-start items-start hidden md:flex">
             <div>
-              <Image src={testimonials[currentIndex].image} alt={testimonials[currentIndex].author} width={200} height={200} className='rounded-full' style={{ filter: 'grayscale(10%)', objectFit: 'cover' }} />
+              <Image
+                src={testimonials[currentIndex].image}
+                alt={testimonials[currentIndex].author}
+                width={200}
+                height={200}
+                className="rounded-full"
+                style={{ filter: 'grayscale(10%)', objectFit: 'cover' }}
+              />
             </div>
           </div>
         </div>

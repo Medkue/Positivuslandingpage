@@ -197,6 +197,18 @@
     bottom: -.25em;
   }
 
+  .bottom-0 {
+    bottom: 0;
+  }
+
+  .right-0 {
+    right: 0;
+  }
+
+  .bg-\[\#FFFDD091\] {
+    background-color: #FFFDD0;
+  }
+
   sup {
     top: -.5em;
   }
@@ -656,6 +668,38 @@
 
   .h-\[600px\] {
     height: 600px;
+  }
+
+  .h-\[700px\] {
+    height: 700px;
+  }
+
+  .h-\[800px\] {
+    height: 800px;
+  }
+
+  .h-\[900px\] {
+    height: 900px;
+  }
+
+  .h-\[1000px\] {
+    height: 1000px;
+  }
+
+  .h-\[1100px\] {
+    height: 1100px;
+  }
+
+  .h-\[100vh\] {
+    height: 100vh;
+  }
+
+  .opacity-80 {
+    opacity: 0.8 !important;
+  }
+
+  .opacity-50 {
+    opacity: 0.5 !important;
   }
 
   .min-h-screen {
